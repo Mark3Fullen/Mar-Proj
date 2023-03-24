@@ -1,0 +1,35 @@
+.App {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.gameover{
+  position: absolute;
+  bottom: 20vh;
+}
+
+.game-container {
+  border: 3px solid black;
+}
+
+header {
+  position: fixed;
+  top: 10vh;
+}
+
+button {
+  bottom: 15vh;
+  position: absolute;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  background-color: #28a745;
+  color: white;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #218838;
+}

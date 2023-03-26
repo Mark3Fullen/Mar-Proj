@@ -1,5 +1,6 @@
 .App {
   display: flex;
+  text-align: center;
   justify-content: center;
   align-items: center;
   height: 100vh;
@@ -7,7 +8,7 @@
 
 .gameover{
   position: absolute;
-  bottom: 20vh;
+  bottom: 18%;
 }
 
 .game-container {
@@ -16,11 +17,10 @@
 
 header {
   position: fixed;
-  top: 10vh;
+  top: 10%;
 }
 
 button {
-  bottom: 15vh;
   position: absolute;
   padding: 10px;
   border: none;
@@ -32,4 +32,55 @@ button {
 
 button:hover {
   background-color: #218838;
+}
+
+button.res-btn {
+  position: absolute;
+  bottom: 15%;
+}
+
+button.res-btn:hover {
+  background-color: #218838;
+}
+
+button.norm-btn {
+  position: absolute;
+  bottom: 15%;
+  background-color: #218838;
+}
+
+button.norm-btn:hover {
+  background-color: #218838;
+}
+
+button.pause-btn {
+  position: absolute;
+  bottom: 15%;
+  background-color: #dc3545;
+}
+
+button.pause-btn:hover {
+  background-color: #c82333;
+}
+
+.scoreDiv{
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+}
+
+.score{
+  position: relative;
+  padding: .2rem;
+}
+
+.speedDiv{
+  display: flex;
+  justify-content: space-between;
+}
+
+.speedItem{
+  position: relative;
+  padding-left: 2rem;
+  padding-right: 2rem;
 }

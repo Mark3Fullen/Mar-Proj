@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react';
+import React, { useState, useEffect } from 'react';
 import { Stage, Layer, Circle, Rect } from 'react-konva';
 
 import './App.css'
@@ -23,10 +23,22 @@ function App() {
   const [pellet, setPellet] = useState(generatePelletPosition());
 
   function generatePelletPosition() {
-    const x = (Math.floor(Math.random() * 40) * 10) - 5;
-    const y = (Math.floor(Math.random() * 40) * 10) - 5;
+    let x = (Math.floor(Math.random() * 40) * 10) - 5;
+    let y = (Math.floor(Math.random() * 40) * 10) - 5;
+    if (x > 400) {
+      x = 395;
+    } else if (x < 10) {
+      x = 5;
+    }
+    if (y > 400) {
+      y = 395;
+    } else if (y < 10) {
+      y = 5;
+    }
     return { x, y };
   }
+
+  console.log(pellet)
 
   useEffect(() => {
     const handleKeyDown = (event) => {
@@ -126,6 +138,7 @@ function App() {
     if (snake.segments[0].x === (pellet.x - 5 || pellet.x + 5) && snake.segments[0].y === (pellet.y - 5 || pellet.y + 5)) {
       setScore(score + 1)
       setPellet(generatePelletPosition());
+      setSpeed(speed * .90)
       setSnake((prevSnake) => ({
         ...prevSnake,
         segments: [...prevSnake.segments, prevSnake.segments.slice(-1)[0]],
@@ -140,7 +153,7 @@ function App() {
       setScore(0);
       setGameOver(true);
     }
-  }, [snake, pellet, score]);
+  }, [snake, pellet, score, speed]);
 
   useEffect(() => {
     let localScore = localStorage.getItem('localScore')
@@ -156,12 +169,6 @@ function App() {
         <div className="scoreDiv">
           <h5 className='score'>High Score: {highScore}</h5>
           <h5 className='score'>Current Score: {score}</h5>
-        </div>
-          <h4>Speed:</h4>
-        <div className='speedDiv'>
-          <button className='speedItem' onClick={() => setSpeed(200)}>Slow</button>
-          <button className='speedItem' onClick={() => setSpeed(100)}>Normal</button>
-          <button className='speedItem' onClick={() => setSpeed(50)}>Fast</button>
         </div>
       </header>
       <div className="game-container">

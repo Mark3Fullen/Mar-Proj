@@ -73,14 +73,3 @@ button.pause-btn:hover {
   position: relative;
   padding: .2rem;
 }
-
-.speedDiv{
-  display: flex;
-  justify-content: space-between;
-}
-
-.speedItem{
-  position: relative;
-  padding-left: 2rem;
-  padding-right: 2rem;
-}

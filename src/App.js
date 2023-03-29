@@ -38,9 +38,13 @@ function App() {
     return { x, y };
   }
 
-  console.log(pellet)
-
   useEffect(() => {
+    const restart = (event) => {
+      if (gameOver === true && event.code === 'Enter') {
+        window.location.reload();
+      }
+    }
+
     const handleKeyDown = (event) => {
       if (gameOver !== true) {
         switch (event.code) {
@@ -76,19 +80,24 @@ function App() {
               }));
             }
             break;
+          case 'Space':
+            setPaused(!paused);
+            break;
           default:
             break;
         }
       } 
     }  
 
+    document.addEventListener('keydown', restart)
     document.addEventListener('keydown', handleKeyDown);
 
     return () => {
+      document.removeEventListener('keydown', restart);
       document.removeEventListener('keydown', handleKeyDown);
     };
 
-  }, [gameOver, snake]);
+  }, [gameOver, snake, paused]);
 
   const moveSnake = () => {
     setSnake((prevSnake) => {
@@ -135,7 +144,7 @@ function App() {
   }, [paused, speed]);  
 
   useEffect(() => {
-    if (snake.segments[0].x === (pellet.x - 5 || pellet.x + 5) && snake.segments[0].y === (pellet.y - 5 || pellet.y + 5)) {
+    if (snake.segments[0].x === (pellet.x +- 5) && snake.segments[0].y === (pellet.y +- 5)) {
       setScore(score + 1)
       setPellet(generatePelletPosition());
       setSpeed(speed * .90)
